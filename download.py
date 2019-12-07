@@ -143,7 +143,11 @@ def download_benchmark(benchmark_url):
 	downloadUrl = downloadUrl[0]
 
 	LocalPath = os.path.join(dom, name + '.zip')
-	urllib.request.urlretrieve(downloadUrl, LocalPath)
+	try:
+		urllib.request.urlretrieve(downloadUrl, LocalPath)
+	except urllib.error.HTTPError as e:
+		print(name)
+		return '-1'
 
 	# print(name + ' download finished')
 	return name

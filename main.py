@@ -16,6 +16,8 @@ urls = download.get_download_url_list()
 def deal_with_url(url):
     # print('---------------')
     name = download.download_benchmark(url)
+    if name == '-1':
+        return
     wash.unzip(dom, name)
     wash.deal_file(dom, name)
     wash.remove_tmp(dom, name)
