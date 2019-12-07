@@ -1,14 +1,14 @@
 import download
 import wash
 from multiprocessing.dummy import Pool as ThreadPool
+import sys
 
 dom = 'bio'
 low = '0 B'
-up = '10000 B'
+up = '100 MB'
 
-dom = input('Please enter domain: ')
-up = input('Please enter the file upper size: ')
-low = input('Please enter the file lower size: ')
+argvs = list(sys.argv)
+dom = argvs[1]
 
 download.set_dom(dom, low, up)
 urls = download.get_download_url_list()

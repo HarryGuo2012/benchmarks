@@ -15,15 +15,13 @@ def getHtml(url):
 		print('Html file already exists, skip catching html')
 		f = open(os.path.join('htmls', dom + '.html'), 'r')
 		return f.read()
-		#请求
+		
 	request = urllib.request.Request(url)
 
-	#爬取结果
 	response = urllib.request.urlopen(request)
 
 	html = response.read()
 
-	#设置解码方式
 	html = html.decode('utf-8')
 
 	f = open(os.path.join('htmls', dom + '.html'), 'w')
