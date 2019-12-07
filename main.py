@@ -14,7 +14,7 @@ download.set_dom(dom, low, up)
 urls = download.get_download_url_list()
 
 def deal_with_url(url):
-    print('---------------')
+    # print('---------------')
     name = download.download_benchmark(url)
     wash.unzip(dom, name)
     wash.deal_file(dom, name)
