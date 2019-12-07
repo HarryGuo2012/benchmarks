@@ -83,10 +83,12 @@ def get_download_url_list():
 
 	# print('download from ' + url + ' to ./' + dir)
 
-	if os.path.isdir(dir):
-		# print('directory of ' + dir + ' exists, skip make directory')
-	else:
-		# print('make directory of ' + dir)
+	# if os.path.isdir(dir):
+	# 	# print('directory of ' + dir + ' exists, skip make directory')
+	# else:
+	# 	# print('make directory of ' + dir)
+	# 	os.mkdir(dir)
+	if not os.path.isdir(dir):
 		os.mkdir(dir)
 	
 	# print('Getting Html')
