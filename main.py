@@ -10,7 +10,7 @@ dom = input('Please enter domain: ')
 up = input('Please enter the file upper size: ')
 low = input('Please enter the file lower size: ')
 
-download.set_dom(dom, up, low)
+download.set_dom(dom, low, up)
 urls = download.get_download_url_list()
 
 def deal_with_url(url):
