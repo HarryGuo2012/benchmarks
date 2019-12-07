@@ -9,17 +9,17 @@ def unzip(dom, name):
 
 def deal_file(dom, name):
     if os.path.isfile(name + '.edges'):
-        # print('It is edges format')
+        print('It is edges format')
         deal_with_edgelist(dom, name)
         return True
     if os.path.isfile(name + '.mtx'):
-        # print('It is mtx format')
+        print('It is mtx format')
         deal_with_mtx(dom, name)
         return True
     return False
 
 def deal_with_mtx(dom, name):
-    # print('Converting mtx to txt...')
+    print('Converting mtx to txt...')
     fileName = name + '.mtx'
     f = open(fileName, 'r')
 
@@ -47,10 +47,10 @@ def deal_with_mtx(dom, name):
 
     with open(os.path.join(dom, name + '.txt'), 'w') as fw:
         fw.write('%s' % '\n'.join(result))
-    # print('Converting finished')
+    print('Converting finished')
 
 def deal_with_edgelist(dom, name):
-    # print('Converting edgelist to txt...')
+    print('Converting edgelist to txt...')
     fileName = name + '.edges'
     dict = {}
     se = set()
@@ -69,7 +69,7 @@ def deal_with_edgelist(dom, name):
 
         haha = re.findall('(\d{1,})', line)
         
-        ## print(haha)
+        #print(haha)
 
         u = int(haha[0])
         v = int(haha[1])
@@ -110,10 +110,10 @@ def deal_with_edgelist(dom, name):
 
     with open(os.path.join(dom, name + '.txt'), 'w') as fw:
         fw.write('%s' % '\n'.join(res))
-    # print('Converting finished')
+    print('Converting finished')
 
 def remove_tmp(dom, name):
-    # print('removing template files')
+    print('removing template files')
     if os.path.isfile(name + '.edges'):
         os.system('rm -rdf ' + name + '.edges')
     if os.path.isfile(name + '.mtx'):

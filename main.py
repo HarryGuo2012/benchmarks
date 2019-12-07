@@ -14,7 +14,7 @@ download.set_dom(dom, low, up)
 urls = download.get_download_url_list()
 
 def deal_with_url(url):
-    # print('---------------')
+    print('---------------')
     name = download.download_benchmark(url)
     if name == '-1':
         return
@@ -22,8 +22,10 @@ def deal_with_url(url):
     wash.deal_file(dom, name)
     wash.remove_tmp(dom, name)
 
-pool = ThreadPool(4)
+# pool = ThreadPool(4)
 
-pool.map(deal_with_url, urls)
-pool.close()
+# pool.map(deal_with_url, urls)
+# pool.close()
+
+map(deal_with_url, urls)
 
