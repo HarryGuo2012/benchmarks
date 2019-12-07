@@ -146,7 +146,7 @@ def download_benchmark(benchmark_url):
 	try:
 		urllib.request.urlretrieve(downloadUrl, LocalPath)
 	except urllib.error.HTTPError as e:
-		print(name)
+		print('HTTP Error: ' + name)
 		return '-1'
 
 	print(name + ' download finished')
