@@ -3,8 +3,14 @@ import wash
 from multiprocessing.dummy import Pool as ThreadPool
 
 dom = 'bio'
+low = '0 B'
+up = '10000 B'
 
-download.set_dom(dom, '0 B', '10000 B')
+dom = input('Please enter domain: ')
+up = input('Please enter the file upper size: ')
+low = input('Please enter the file lower size: ')
+
+download.set_dom(dom, up, low)
 urls = download.get_download_url_list()
 
 def deal_with_url(url):
