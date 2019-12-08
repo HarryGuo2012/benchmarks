@@ -95,7 +95,7 @@ def get_download_url_list():
 	html = getHtml(url)
 
 	print('Html got, analysis start')
-	print(html)
+	# print(html)
 
 	haha = re.findall('success hrefRow tooltips" data.*?>Download', html, re.S)
 
