@@ -27,5 +27,6 @@ def deal_with_url(url):
 # pool.map(deal_with_url, urls)
 # pool.close()
 
+print('urls: ' + str(urls))
 map(deal_with_url, urls)
 

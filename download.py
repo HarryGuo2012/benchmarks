@@ -105,7 +105,7 @@ def get_download_url_list():
 		name = re.findall('data-url="(.*?)\.php"', benchmark_url)
 		name = name[0]
 
-		print(name)
+		# print(name)
 
 		siz = re.findall('>(\d* [KM]B)', benchmark_url)
 		if len(siz) == 0:
