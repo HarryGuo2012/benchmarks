@@ -13,20 +13,26 @@ dom = argvs[1]
 download.set_dom(dom, low, up)
 urls = download.get_download_url_list()
 
-def deal_with_url(url):
-    print('---------------')
-    name = download.download_benchmark(url)
-    if name == '-1':
-        return
-    wash.unzip(dom, name)
-    wash.deal_file(dom, name)
-    wash.remove_tmp(dom, name)
+# def deal_with_url(url):
+#     print('---------------')
+#     name = download.download_benchmark(url)
+#     if name == '-1':
+#         return
+#     wash.unzip(dom, name)
+#     wash.deal_file(dom, name)
+#     wash.remove_tmp(dom, name)
 
 # pool = ThreadPool(4)
 
 # pool.map(deal_with_url, urls)
 # pool.close()
 
-print('urls: ' + str(urls))
-map(deal_with_url, urls)
+for url in urls:
+    print('---------------')
+    name = download.download_benchmark(url)
+    if name == '-1':
+        continue
+    wash.unzip(dom, name)
+    wash.deal_file(dom, name)
+    wash.remove_tmp(dom, name)
 
