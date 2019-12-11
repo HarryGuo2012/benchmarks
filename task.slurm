@@ -20,4 +20,4 @@
 
 # python3 main.py $dom
 
-python3 main.py bn
+python3 main.py $1
