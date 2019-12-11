@@ -6,7 +6,7 @@
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
 #SBATCH --time=10:0:0
-#SBATCH --mem-per-cpu=2G
+#SBATCH --mem-per-cpu=3G
 
 # Dynamic Linking Library
 # export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/yi.zhou/Gurobi_Env/gurobi811/linux64/lib
@@ -20,4 +20,4 @@
 
 # python3 main.py $dom
 
-python3 main.py bio
+python3 main.py bn

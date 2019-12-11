@@ -8,7 +8,6 @@ std::vector<std::pair<int, int> > edgeList;
 // input file path and output file path
 int main(int argc, char *argv[]) {
     std::ifstream ifs(argv[1]);
-    std::ofstream ofs(argv[2]);
 
     while (ifs.getline(buff, 256)){
         if (buff[0] == '%' || buff[0] < '0' || '9' < buff[0]) continue;
@@ -52,6 +51,8 @@ int main(int argc, char *argv[]) {
 
     int n = vertexList.size();
     int m = edgeList.size();
+
+    std::ofstream ofs(argv[2]);
 
     ofs << n << " " << m << std::endl;
     for (auto e : edgeList) ofs << e.first << " " << e.second << std::endl;
