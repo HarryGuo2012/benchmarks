@@ -14,8 +14,10 @@
 # your bash script
 # you could give the control to python or whatever you like
 
-doms=("asn" "bio" "bn" "ca" "chem" "cit" "eco" "econ" "email" "graph500" "heter" "ia" "inf" "labeled" "massive" "power" "proximity" "rand" "rec" "road" "rt" "sc" "soc" "socfb" "tech" "web" "dynamic" "tscc" "bhoslib" "dimacs" "dimacs10" "mldata")
+# doms=("asn" "bio" "bn" "ca" "chem" "cit" "eco" "econ" "email" "graph500" "heter" "ia" "inf" "labeled" "massive" "power" "proximity" "rand" "rec" "road" "rt" "sc" "soc" "socfb" "tech" "web" "dynamic" "tscc" "bhoslib" "dimacs" "dimacs10" "mldata")
 
-dom=${doms[$SLURM_ARRAY_TASK_ID]}
+# dom=${doms[$SLURM_ARRAY_TASK_ID]}
 
-python3 main.py $dom
+# python3 main.py $dom
+
+python3 main.py bio
