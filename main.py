@@ -34,7 +34,7 @@ for url in urls:
         continue
     wash.unzip(dom, name)
 
-    name = wash.check_name(name)
+    name = wash.check_name(dom, name)
 
     if name == '-1':
         continue

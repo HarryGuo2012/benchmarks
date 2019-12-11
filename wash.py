@@ -10,20 +10,44 @@ def unzip(dom, name):
 def change_name(name):
     res = ''
     for c in name:
-        if c == '-':
-            res = res + '_'
-        elif c == '_':
+        if c == '_':
             res = res + '-'
         else:
             res = res + c
     return res
 
-def check_name(name):
+def check_name(dom, name):
     if os.path.isfile(name + '.edges') or os.path.isfile(name + '.mtx'):
         return name
-    changed_name = change_name(name)
+
+    nameList = name.split()
+    
+    allFileList = os.listdir('.')
+    for fileName in allFileList:
+        changed_name = change_name(fileName)
+
+        if name + '.edges' == changed_name:
+            os.rename(fileName, changed_name)
+            break
+        if name + '.mtx' == changed_name:
+            os.rename(fileName, changed_name)
+            break
+    
+    allFileList = os.listdir(dom)
+    for fileName in allFileList:
+        changed_name = change_name(fileName)
+
+        if name + '.edges' == changed_name:
+            os.rename(dom + '/' + fileName, dom + '/' + changed_name)
+            os.replace(dom + '/' + changed_name, changed_name)
+            break
+        if name + '.mtx' == changed_name:
+            os.rename(dom + '/' + fileName, dom + '/' + changed_name)
+            os.replace(dom + '/' + changed_name, changed_name)
+            break
+    
     if os.path.isfile(name + '.edges') or os.path.isfile(name + '.mtx'):
-        return changed_name
+        return name
     return '-1'
 
 def deal_file(dom, name):
