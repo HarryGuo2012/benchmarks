@@ -7,6 +7,25 @@ def unzip(dom, name):
 
     os.system('unzip -o ' + fileName)
 
+def change_name(name):
+    res = ''
+    for c in name:
+        if c == '-':
+            res = res + '_'
+        elif c == '_':
+            res = res + '-'
+        else:
+            res = res + c
+    return res
+
+def check_name(name):
+    if os.path.isfile(name + '.edges') or os.path.isfile(name + '.mtx'):
+        return name
+    changed_name = change_name(name)
+    if os.path.isfile(name + '.edges') or os.path.isfile(name + '.mtx'):
+        return changed_name
+    return '-1'
+
 def deal_file(dom, name):
     if os.path.isfile(name + '.edges'):
         print('It is edges format')
@@ -21,95 +40,104 @@ def deal_file(dom, name):
 def deal_with_mtx(dom, name):
     print('Converting mtx to txt...')
     fileName = name + '.mtx'
-    f = open(fileName, 'r')
+    # f = open(fileName, 'r')
 
-    result = []
+    # result = []
 
-    cnt = 0
+    # cnt = 0
 
-    for line in f.readlines():
-        if line[0] == '%':
-            continue
-        cnt = cnt + 1
-        haha = line
-        if cnt == 1:
-            haha = re.findall('\d* (\d* \d*)', line)
-            haha = haha[0]
-            result.append(haha)
-        else:
-            xixi = haha.split()
-            if len(xixi) == 2:
-                result.append(haha)
-            else:
-                result.append(xixi[0] + ' ' + xixi[1] + '\n')
+    # for line in f.readlines():
+    #     if line[0] == '%':
+    #         continue
+    #     cnt = cnt + 1
+    #     haha = line
+    #     if cnt == 1:
+    #         haha = re.findall('\d* (\d* \d*)', line)
+    #         haha = haha[0]
+    #         result.append(haha)
+    #     else:
+    #         xixi = haha.split()
+    #         if len(xixi) == 2:
+    #             result.append(haha)
+    #         else:
+    #             result.append(xixi[0] + ' ' + xixi[1] + '\n')
 
-    f.close()
+    # f.close()
 
-    with open(os.path.join(dom, name + '.txt'), 'w') as fw:
-        fw.write('%s' % '\n'.join(result))
+    # with open(os.path.join(dom, name + '.txt'), 'w') as fw:
+    #     fw.write('%s' % '\n'.join(result))
+
+    outFileName = os.path.join(dom, name + '.txt')
+
+    os.system('./mtxListConvert ' + fileName + ' ' + outFileName)
+
     print('Converting finished')
 
 def deal_with_edgelist(dom, name):
     print('Converting edgelist to txt...')
     fileName = name + '.edges'
-    dict = {}
-    se = set()
-    f = open(fileName, 'r')
+    # dict = {}
+    # se = set()
+    # f = open(fileName, 'r')
 
-    result = []
+    # result = []
 
-    n = 0
-    cnt = 0
+    # n = 0
+    # cnt = 0
 
-    for line in f.readlines():
-        cnt = cnt + 1
+    # for line in f.readlines():
+    #     cnt = cnt + 1
 
-        if line[0] == '%':
-            continue
+    #     if line[0] == '%':
+    #         continue
 
-        haha = re.findall('(\d{1,})', line)
+    #     haha = re.findall('(\d{1,})', line)
         
-        #print(haha)
+    #     #print(haha)
 
-        u = int(haha[0])
-        v = int(haha[1])
+    #     u = int(haha[0])
+    #     v = int(haha[1])
 
-        if u in dict:
-            u = dict[u]
-        else:
-            n = n + 1
-            dict[u] = n
-            u = dict[u]
+    #     if u in dict:
+    #         u = dict[u]
+    #     else:
+    #         n = n + 1
+    #         dict[u] = n
+    #         u = dict[u]
 
-        if v in dict:
-            v = dict[v]
-        else:
-            n = n + 1
-            dict[v] = n
-            v = dict[v]
+    #     if v in dict:
+    #         v = dict[v]
+    #     else:
+    #         n = n + 1
+    #         dict[v] = n
+    #         v = dict[v]
 
-        if u == v:
-            continue
+    #     if u == v:
+    #         continue
 
-        if (u, v) in se:
-            continue
-        if (v, u) in se:
-            continue
+    #     if (u, v) in se:
+    #         continue
+    #     if (v, u) in se:
+    #         continue
 
-        se.add((u, v))
+    #     se.add((u, v))
 
-        result.append([u, v])
+    #     result.append([u, v])
 
-    f.close()
-    m = len(result)
+    # f.close()
+    # m = len(result)
 
-    result = [[n, m]] + result
-    res = []
-    for tmp in result:
-        res.append(str(tmp[0]) + ' ' + str(tmp[1]))
+    # result = [[n, m]] + result
+    # res = []
+    # for tmp in result:
+    #     res.append(str(tmp[0]) + ' ' + str(tmp[1]))
 
-    with open(os.path.join(dom, name + '.txt'), 'w') as fw:
-        fw.write('%s' % '\n'.join(res))
+    # with open(os.path.join(dom, name + '.txt'), 'w') as fw:
+    #     fw.write('%s' % '\n'.join(res))
+
+    outFileName = os.path.join(dom, name + '.txt')
+    os.system('./edgeListConvert ' + fileName + ' ' + outFileName)
+
     print('Converting finished')
 
 def remove_tmp(dom, name):

@@ -1,7 +1,6 @@
 #include <bits/stdc++.h>
 
 char buff[256];
-std::stringstream ss;
 
 std::vector<int> vertexList;
 std::vector<std::pair<int, int> > edgeList;
@@ -11,13 +10,17 @@ int main(int argc, char *argv[]) {
     std::ifstream ifs(argv[1]);
     std::ofstream ofs(argv[2]);
 
-    while (ifs.getline(buff, 256)) {
+    while (ifs.getline(buff, 256)){
         if (buff[0] == '%' || buff[0] < '0' || '9' < buff[0]) continue;
 
+        // std::cout << buff << std::endl;
+
         int u, v;
-        ss.clear();
+        std::stringstream ss;
         ss << buff;
         ss >> u >> v;
+
+        // std::cout << u << " " << v << std::endl;
 
         if (u == v) continue; // self loop
 

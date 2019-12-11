@@ -4,8 +4,6 @@ char buff[256];
 
 int n, m;
 
-std::stringstream ss;
-
 int main(int argc, char *argv[]) {
     std::ifstream ifs(argv[1]);
     std::ofstream ofs(argv[2]);
@@ -17,7 +15,7 @@ int main(int argc, char *argv[]) {
 
         cnt = cnt + 1;
 
-        ss.clear();
+        std::stringstream ss;
         ss << buff;
 
         if (cnt == 1) {

@@ -33,6 +33,16 @@ for url in urls:
     if name == '-1':
         continue
     wash.unzip(dom, name)
-    wash.deal_file(dom, name)
+
+    name = wash.check_name(name)
+
+    if name == '-1':
+        continue
+
+    flag = wash.deal_file(dom, name)
+
+    if flag == False:
+        continue
+
     wash.remove_tmp(dom, name)
 
