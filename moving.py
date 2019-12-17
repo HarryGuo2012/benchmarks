@@ -13,7 +13,8 @@ for line in lines:
 if not os.path.isdir('big_temp'):
     os.mkdir('big_temp')
 
-for root, dire, filename in os.walk('.'):
-    if filename in haha:
-        copyfile(os.path.join(root, filename), os.path.join('big_temp', filename))
+for root, dire, filenames in os.walk('.'):
+    for filename in filenames:
+        if filename in haha:
+            copyfile(os.path.join(root, filename), os.path.join('big_temp', filename))
 
