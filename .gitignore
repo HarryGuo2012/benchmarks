@@ -3,3 +3,4 @@
 !.gitignore
 !task.slurm
 !*.cpp
+!big_list.txt
