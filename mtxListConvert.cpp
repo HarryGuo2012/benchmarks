@@ -21,6 +21,7 @@ int main(int argc, char *argv[]) {
         if (cnt == 1) {
             int t;
             ss >> t >> n >> m;
+            std::cout << "n: " << n << "\t" << "m: " << m << std::endl;
             ofs << n << " " << m << std::endl;
             continue;
         }
