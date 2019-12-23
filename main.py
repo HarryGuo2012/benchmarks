@@ -4,8 +4,8 @@ from multiprocessing.dummy import Pool as ThreadPool
 import sys
 
 dom = 'bio'
-low = '0 B'
-up = '100 MB'
+low = '50 KB'
+up = '40 MB'
 
 argvs = list(sys.argv)
 dom = argvs[1]
