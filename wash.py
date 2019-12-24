@@ -92,6 +92,7 @@ def deal_with_mtx(dom, name):
     #     fw.write('%s' % '\n'.join(result))
 
     outFileName = os.path.join(dom, name + '.txt')
+    os.system('chmod 777 ' + fileName)
 
     os.system('./mtxListConvert ' + fileName + ' ' + outFileName)
 
@@ -160,6 +161,7 @@ def deal_with_edgelist(dom, name):
     #     fw.write('%s' % '\n'.join(res))
 
     outFileName = os.path.join(dom, name + '.txt')
+    os.system('chmod 777 ' + fileName)
     os.system('./edgeListConvert ' + fileName + ' ' + outFileName)
 
     print('Converting finished')
