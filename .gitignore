@@ -1,6 +1,6 @@
 /*
 !*.py
 !.gitignore
-!task.slurm
+!*.slurm
 !*.cpp
 !big_list.txt
