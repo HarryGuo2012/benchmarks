@@ -7,7 +7,6 @@ char buff[256];
 
 int main(int argc, char *argv[]) {
     std::ifstream ifs(argv[1]);
-    std::ofstream ofs(argv[2]);
 
     int cnt = 0;
 
