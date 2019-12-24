@@ -7,7 +7,7 @@ t = t[2]
 
 L = []
 
-for parent, dirnames, filenames in os.walk('misc'):
+for parent, dirnames, filenames in os.walk(t):
     for filename in filenames:
         name = os.path.join(parent, filename)
 
